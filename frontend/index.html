@@ -25,17 +25,14 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="css/normalize.css">
 
+    <link rel="stylesheet" href="css/skeleton.css">
 
+    <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="css/jquery.listtopie.css">
 
-    <!--
-
-TemplateMo 583 Festava Live
-
-https://templatemo.com/tm-583-festava-live
-
--->
 </head>
 
 <body>
@@ -469,81 +466,72 @@ https://templatemo.com/tm-583-festava-live
                         <h2 class="text-center mb-4">핵심원자재 현황</h2>
                     </div>
 
-                    <!--도넛 svg 그래프 만들기 -->
-
-
-                    <!--도넛 svg 그래프 만들기 -->
-                    <!--
-                    <div class="col-lg-6 col-12">
-                        <div class="pricing-thumb">
-                            <div class="d-flex">
-                                <div>
-                                    <h3><small>Early Bird</small> $120</h3>
-
-                                    <p>Including good things:</p>
-                                </div>
-
-                                <p class="pricing-tag ms-auto">Save up to <span>50%</span></h2>
+                    <!-- example7 -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="twelve column" style="margin-top: 5%">
+                                <h4>Example 7 Use methods and events</h4>
+                                <hr>
                             </div>
-
-                            <ul class="pricing-list mt-3">
-                                <li class="pricing-list-item">platform for potential customers</li>
-
-                                <li class="pricing-list-item">digital experience</li>
-
-                                <li class="pricing-list-item">high-quality sound</li>
-
-                                <li class="pricing-list-item">standard content</li>
-                            </ul>
-
-                            <a class="link-fx-1 color-contrast-higher mt-4" href="ticket.html">
-                                <span>Buy Ticket</span>
-                                <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
-                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="16" cy="16" r="15.5"></circle>
-                                        <line x1="10" y1="18" x2="16" y2="12"></line>
-                                        <line x1="16" y1="12" x2="22" y2="18"></line>
-                                    </g>
-                                </svg>
-                            </a>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-6 col-12 mt-4 mt-lg-0">
-                        <div class="pricing-thumb">
-                            <div class="d-flex">
-                                <div>
-                                    <h3><small>Standard</small> $240</h3>
 
-                                    <p>What makes a premium festava?</p>
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="six columns">
+                                <div class='rowtest7'>
+                                    <div data-lcolor="#3a1f5d">25</div>
+                                    <div data-lcolor="#c83660">32</div>
+                                    <div data-lcolor="#e15249">80</div>
+                                    <div data-lcolor="#f6d365">50</div>
+                                    <div data-lcolor="#207561">20</div>
                                 </div>
                             </div>
 
-                            <ul class="pricing-list mt-3">
-                                <li class="pricing-list-item">platform for potential customers</li>
+                            <div class="six columns">
 
-                                <li class="pricing-list-item">digital experience</li>
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row7_hover' value="Hover">
+                                    </div>
+                                </div>
 
-                                <li class="pricing-list-item">high-quality sound</li>
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row7_change' value="Change">
+                                    </div>
+                                </div>
 
-                                <li class="pricing-list-item">premium content</li>
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row7_opt' value="Set options">
+                                    </div>
+                                </div>
 
-                                <li class="pricing-list-item">live chat support</li>
-                            </ul>
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row7_destroy' value="Destroy">
+                                    </div>
+                                </div>
 
-                            <a class="link-fx-1 color-contrast-higher mt-4" href="ticket.html">
-                                <span>Buy Ticket</span>
-                                <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
-                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="16" cy="16" r="15.5"></circle>
-                                        <line x1="10" y1="18" x2="16" y2="12"></line>
-                                        <line x1="16" y1="12" x2="22" y2="18"></line>
-                                    </g>
-                                </svg>
-                            </a>
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row7_refresh' value="Refresh">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="button-left">
+                                        <input class="button-primary" type="button" id='row8_getAttr'
+                                            value="Get sector 1 value">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                    -->
+                    <!-- //example7 -->
 
 
                 </div>
@@ -779,6 +767,67 @@ T e m p l a t e M o
     <script src="js/jquery.sticky.js"></script>
     <script src="js/click-scroll.js"></script>
     <script src="js/custom.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
+    <script src="./js/jquery.listtopie.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            /*example7*/
+            $('.rowtest7').listtopie({
+                startAngle: 0,
+                strokeWidth: 5,
+                hoverEvent: true,
+                drawType: 'round',
+                speedDraw: 100,
+                hoverColor: '#ffffff',
+                textColor: '#000',
+                strokeColor: '#ffffff',
+                textSize: '18',
+                hoverAnimate: true,
+                marginCenter: 50,
+                sectorRotate: true,
+                infoText: true,
+                usePercent: true
+            });
+
+            $('#row7_hover').on('click', function () {
+                $('.rowtest7').listtopie('hoverGoTo', 2);
+            });
+
+            $('#row7_change').on('click', function () {
+                $('.rowtest7').listtopie('changeGoTo', 1);
+            });
+
+            $('#row7_opt').on('click', function () {
+                $('.rowtest7').listtopie('listtopieSetOption', 'drawType', 'fade', true);
+            });
+
+            $('#row7_destroy').on('click', function () {
+                $('.rowtest7').listtopie('destroy');
+            });
+
+            $('#row7_refresh').on('click', function () {
+                $('.rowtest7').listtopie('refresh');
+            });
+
+            $('.rowtest7').on('unInit', function (event, listtopie) {
+                alert('afterDestroy');
+            });
+
+            $('.rowtest7').on('afterChange', function (event, listtopie, currentChangeSector) {
+                alert('afterChange event - Current change sector number -' + listtopie.currentChangeSector);
+            });
+
+            $('#row8_getAttr').on('click', function () {
+                var v = $('.rowtest7').listtopie('getSectorAttr', 1, 'note');
+                alert('Sector 1 value is ' + v);
+            });
+            /*example7*/
+        });
+    </script>
 
 </body>
 
