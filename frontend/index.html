@@ -168,19 +168,18 @@ https://templatemo.com/tm-583-festava-live
         </section>
         <!--     end Index.html(0)_Logo Page-->
 
-        <section class="about-section section-padding" id="section_2">
+        <section class="about-section section-padding" id="section_3">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">
-                        <div class="services-info">
-                            <div class="col-12 text-center">
-                                <h2 class="mb-4 text-center">About Project</h2>
-                            </div>
+                    <!--<div class="col-lg-6 col-12 mb-4 mb-lg-0 d-flex align-items-center">-->
+                    <!--<div class="services-info">-->
+                    <div class="col-12 text-center">
+                        <h2 class="mb-4">About Project</h2>
+                    </div>
+                    <p class="col-12 text-center text-black">경제 지표·산업 지표 분석을 통한 구리 수급 안정화 예측 모델 서비스 <br>20개년
+                        데이터 학습을 토대로 도출한 6개월의 구리 수급 추세선을 통해 구리를 수입하는 제조수출기업에 인사이트 제공</p>
 
-                            <p class="col-12 text-center text-black">경제 지표·산업 지표 분석을 통한 구리 수급 안정화 예측 모델 서비스 <br>20개년
-                                데이터 학습을 토대로 도출한 6개월의 구리 수급 추세선을 통해 구리를 수입하는 제조수출기업에 인사이트 제공</p>
-
-                            <!--  
+                    <!--  
                             <h6 class="text-black mt-4">Once in Lifetime Experience</h6>
 
                             <p class="text-black">You are not allowed to redistribute the template ZIP file on any other
@@ -191,22 +190,22 @@ https://templatemo.com/tm-583-festava-live
                             <p class="text-black">Please tell your friends about our website. Thank you.</p>
                             -->
 
-                            <div class="box-container">
-                                <div class="box" id="box1">
-                                    <span class="box-text">박스 1</span>
-                                </div>
+                    <div class="box-container">
+                        <div class="box" id="box1">
+                            <span class="box-text">박스 1</span>
+                        </div>
 
-                                <div class="box" id="box2">
-                                    <span class="box-text">박스 2</span>
-                                </div>
+                        <div class="box" id="box2">
+                            <span class="box-text">박스 2</span>
+                        </div>
 
-                                <div class="box" id="box3">
-                                    <span class="box-text">박스 3</span>
-                                </div>
-                            </div>
+                        <div class="box" id="box3">
+                            <span class="box-text">박스 3</span>
+                        </div>
+                    </div>
 
 
-                            <!--
+                    <!--
                     <div class="col-lg-6 col-12">
                         <div class="about-text-wrap">
                             <img src="images/pexels-alexander-suhorucov-6457579.jpg" class="about-image img-fluid">
@@ -225,8 +224,8 @@ https://templatemo.com/tm-583-festava-live
                         </div>
                     </div>
                     -->
-                        </div>
-                    </div>
+                </div>
+            </div>
         </section>
         <hr>
 
@@ -235,6 +234,9 @@ https://templatemo.com/tm-583-festava-live
                 <div class="row justify-content-center">
 
                     <div class="col-12 text-center">
+
+                        <!--<h2 class="mb-4">Meet Artists</h2>-->
+
                         <h2 class="mb-4">Story of CANARY</h1>
 
                     </div>
@@ -242,7 +244,7 @@ https://templatemo.com/tm-583-festava-live
                     <div class="col-lg-5 col-12">
                         <div class="artists-thumb">
                             <div class="artists-image-wrap">
-                                <img src="images/artists/canaryimage.jpg" class="artists-image img-fluid" width="250px">
+                                <img src="images/artists/canaryimage.jpg" class="artists-image img-fluid" width="250px;">
                             </div>
 
                             <div class="artists-hover">
@@ -352,7 +354,48 @@ https://templatemo.com/tm-583-festava-live
         </section>
 
 
-        <section class="schedule-section section-padding" id="section_4">
+        <html>
+                <head>
+            <title>svgMap HTML demos</title>
+        
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+            <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
+        
+            <link href="./demo.css" rel="stylesheet" />
+            <link href="./dist/svgMap.css" rel="stylesheet" />
+            <script src="./dist/svgMap.js"></script>
+        </head>
+        
+        <body>
+            <div class="demo-wrapper">
+                <!-- Demo GPD -->
+        
+                <div class="demo-container">
+                    <h2>GDP per capita (PPP)</h2>
+        
+                    <div id="svgMapGPD"></div>
+                    <script src="./data/gdp.js"></script>
+                    <script>
+                        new svgMap({
+                            targetElementID: 'svgMapGPD',
+                            data: svgMapDataGPD,
+                            mouseWheelZoomEnabled: true,
+                            mouseWheelZoomWithKey: true
+                        });
+                    </script>
+                </div>
+                <!-- Demo population -->
+        
+        
+            </div>
+            </div>
+        </body>
+        
+        </html>
+
+        <!--<section class="schedule-section section-padding" id="section_4">
             <div class="container">
                 <div class="row">
 
@@ -446,7 +489,7 @@ https://templatemo.com/tm-583-festava-live
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
         <section class="pricing-section section-padding section-bg" id="section_5">
