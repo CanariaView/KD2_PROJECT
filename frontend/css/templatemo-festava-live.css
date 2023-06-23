@@ -559,7 +559,7 @@ about box
 .box {
   width: 400px;
   height: 500px;
-  background-color: #ffffff;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -567,16 +567,21 @@ about box
   transition: background-color 0.3s ease;
   margin: 10px;
   border: 2px solid #007bff;
+  text-align: center;
 
 }
 
 .box-text {
   font-size: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .box:hover {
   background-color: #007bff;
-  color: #fff;
+  color: white;
 }
 
 /*---------------------------------------
