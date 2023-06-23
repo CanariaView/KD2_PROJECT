@@ -33,14 +33,21 @@
 const boxes = document.querySelectorAll('.box');
 
 boxes.forEach(function (box) {
+  const h3 = box.querySelector('h3'); // Select the h3 element within the box
+
   box.addEventListener('mouseover', function () {
     box.style.backgroundColor = '#007bff';
     box.style.color = '#fff';
+    h3.style.color = '#fff'; // Apply style to the h3 element
   });
 
   box.addEventListener('mouseout', function () {
-    box.style.backgroundColor = '#f2f2f2';
+    box.style.backgroundColor = '#fff';
     box.style.color = 'initial';
+    h3.style.color = 'initial'; // Reset the style of the h3 element
   });
 });
+
+
+
 
