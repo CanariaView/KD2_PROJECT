@@ -97,7 +97,8 @@ h6 {
 p {
   color: var(--p-color);
   font-size: var(--p-font-size);
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-bold);
+
 }
 
 ul li {
@@ -506,11 +507,11 @@ strong {
   ABOUT              
 -----------------------------------------*/
 .about-section {
-  /*background-image: url('../images/edward-unsplash-blur.jpg');*/
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+
 }
 
 .about-image {
@@ -546,6 +547,37 @@ strong {
   padding: 35px;
 }
 
+/*---------------------------------------
+about box 
+-----------------------------------------*/
+.box-container {
+  display: flex;
+  justify-content: center;
+
+}
+
+.box {
+  width: 400px;
+  height: 500px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+  border: 2px solid #007bff;
+
+}
+
+.box-text {
+  font-size: 24px;
+}
+
+.box:hover {
+  background-color: #007bff;
+  color: #fff;
+}
 
 /*---------------------------------------
   TICKET               

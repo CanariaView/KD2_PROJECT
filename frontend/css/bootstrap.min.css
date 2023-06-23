@@ -190,7 +190,8 @@ h6 {
 
 p {
     margin-top: 0;
-    margin-bottom: 1rem
+    margin-bottom: 1rem;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
 abbr[title] {
@@ -1460,7 +1461,7 @@ progress {
 
     .col-lg-6 {
         flex: 0 0 auto;
-        width: 50%
+        width: 78%
     }
 
     .col-lg-7 {
