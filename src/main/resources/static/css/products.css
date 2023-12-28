@@ -1,0 +1,374 @@
+@charset "UTF-8";
+
+p {
+	font-family: kotrag;
+	color:black;
+	font-size:20px;
+}
+	@font-face {
+	   font-family: kotrag;
+	   src: url('/project/font/KOTRA_GOTHIC.ttf');
+	}
+	
+	@font-face {
+	   font-family: kotrab;
+	   src: url('/project/font/KOTRA_BOLD.ttf');
+	}
+	
+	.parallax-window {
+	   background-image: url('/project/image/1920x1080/01.jpg');
+	}
+	
+	.footer {
+	   background-image: url('/project/image/1920x1080/03.jpg');
+	}
+	
+	.buttonSection {
+	   text-align: center;
+	}
+	
+	.buttonSection>input {
+	   margin-left: 50px;
+	   margin-right: 50px;
+	}
+	
+	.row {
+	   display: inline-block;
+	   justify-content: center;
+	}
+	
+	#priceContainer,
+	#stockContainer {
+	   display: inline-block;
+	   border:1px solid #ccc;
+	   
+	}
+	
+	/* Table CSS*/
+	.trendTable {
+	   margin: auto;
+	   min-width: 400px;
+	   max-width: 100%;
+	   border-collapse: collapse;
+	   
+	   color: #333;
+	   border-radius: .4em;
+	   overflow: hidden;
+	   margin-left:60px;
+	 
+	}
+	
+	.trendTable tr:first-child {
+	   border-top: none;
+	   background: #428bca;
+	   color: #fff;
+	}
+	
+	.trendTable tr {
+	   border-top: 1px solid #ddd;
+	   border-bottom: 1px solid #ddd;
+	   background-color: #f5f9fc;
+	}
+	
+	.trendTable tr:nth-child(odd):not(:first-child) {
+	   background-color: #ebf3f9;
+	}
+	
+	.trendTable th {
+	   display: none;
+	}
+	
+	.trendTable td {
+	   display: block;
+	}
+	
+	.trendTable td:first-child {
+	   margin-top: .5em;
+	}
+	
+	.trendTable td:last-child {
+	   margin-bottom: .5em;
+	}
+	
+	.trendTable td:before {
+	   content: attr(data-th) ": ";
+	   font-weight: bold;
+	   width: 120px;
+	   display: inline-block;
+	   color: #000;
+	}
+	
+	.trendTable th,
+	.trendTable td {
+	   text-align: center;
+	}
+	
+	.trendTable tr {
+	   border-color: #bfbfbf;
+	}
+	
+	.trendTable th,
+	.trendTable td {
+	   padding: .5em 1em;
+	}
+	
+	@media screen and (max-width: 601px) {
+	   .trendTable tr:nth-child(2) {
+	      border-top: none;
+	   }
+	}
+	
+	@media screen and (min-width: 600px) {
+	   .trendTable tr:hover:not(:first-child) {
+	      background-color: #d8e7f3;
+	   }
+	
+	   .trendTable td:before {
+	      display: none;
+	   }
+	
+	   .trendTable th,
+	   .trendTable td {
+	      display: table-cell;
+	      padding: .25em .5em;
+	   }
+	
+	   .trendTable th:first-child,
+	   .trendTable td:first-child {
+	      padding-left: 0;
+	   }
+	
+	   .trendTable th:last-child,
+	   .trendTable td:last-child {
+	      padding-right: 0;
+	   }
+	
+	   .trendTable th,
+	   .trendTable td {
+	      padding: 1em !important;
+	   }
+	}
+	
+	/* Button CSS*/
+	.buttons {
+	   text-align: center;
+	   display: flex;
+	   flex-wrap: nowrap;
+	   margin-left: 200px;
+	
+	}
+	
+	.btn-hover {
+	   width: 150px;
+	   font-size: 16px;
+	   font-weight: 600;
+	   color: #fff;
+	   cursor: pointer;
+	   margin: 30px 30px 40px 30px;
+	   height: 50px;
+	   text-align: center;
+	   border: none;
+	   background-size: 300% 100%;
+	
+	   border-radius: 50px;
+	   -o-transition: all .4s ease-in-out;
+	   -webkit-transition: all .4s ease-in-out;
+	   transition: all .4s ease-in-out;
+	}
+	
+	.btn-hover:hover {
+	   background-position: 100% 0;
+	   -o-transition: all .4s ease-in-out;
+	   -webkit-transition: all .4s ease-in-out;
+	   transition: all .4s ease-in-out;
+	}
+	
+	.btn-hover:focus {
+	   outline: none;
+	}
+	
+	.btn-hover.color-9 {
+	   background-image: linear-gradient(to right, #428bca, #64a7e0, #87c2f6, #aadefe);
+	}
+	
+	/* Footer 안됨 */
+	.col-xs-6:last-child {
+	   display: flex;
+	   justify-content: flex-end;
+	   align-items: center;
+	}
+
+		
+.wraps {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button2 {
+    margin-top: 10px;
+    width: 85px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button2:hover {
+    background-color: #17bed2;
+    box-shadow: 0px 15px 20px rgba(23, 190, 210, 0.4);
+    color: #fff;
+}
+
+.loginMember {
+	position: fixed;
+	top: 1%;
+	right:1%;
+}
+
+#plotTitle {
+	margin-left:220px;
+	margin-bottom:0px;
+	font-size:18px;
+	color: rgb(51, 51, 51);
+	width:500px;
+}
+
+#slideshow {
+  width: 1100px;
+  margin-left:70px;
+} 
+
+#slideshow #slidewindow {
+  width: 1100px;
+  height: 730px;
+  position: relative;
+  overflow: hidden;
+}
+
+#slideshow #slidewindow ul {
+  width: 1000px;
+  margin-left:50px;
+  margin-top:20px;
+}
+
+#slideshow #slidewindow div {
+  position: absolute;
+  top: 0;
+  width: 1100px;
+  height: 730px;
+  transition: transform .5s ease;
+  border: 1px solid #ccc;
+  background-color:white;
+}
+
+#slideshow #slidewindow div h2 {
+  margin:16px 0px 9px 380px;
+  
+}
+
+/* Controls */
+
+#slideshow #controls {
+  text-align: center;
+  transition: all 200ms ease-in-out;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background-color:#f3f3f3;
+}
+
+#slideshow #controls #next, #slideshow #controls #prev {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+#slideshow #controls #next {
+  float: right;
+}
+
+#slideshow #controls #prev {
+  float: left;
+}
+
+#slideshow #controls #next div, #slideshow #controls #prev div {
+  position: absolute;
+  pointer-events: none;
+  border-style: solid;
+  border-color: #383838;
+  border-width: 2px 2px 0 0;
+  content: '';
+  display: inline-block;
+  left: 18px;
+  top: 18px;
+  transform: rotate(45deg);
+  vertical-align: top;
+  width: 8px;
+  height: 8px;
+}
+
+#slideshow #controls #prev div {
+  transform: rotate(-135deg);
+}
+
+#slideshow #controls #dots {
+  margin: auto;
+  display: inline-block;
+  padding: 0;
+  list-style-type: none;
+  width: auto;
+}
+
+#slideshow #controls #dots li {
+  display: inline-block;
+  border: 2px solid #383838;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 26px 4px;
+}
+
+#slideshow #controls #dots .active {
+  background: #383838;
+}
+
+#slideshow #controls #dots li:hover,
+#slideshow #controls #next:hover,
+#slideshow #controls #prev:hover {
+  transform: scale(1.125);
+}
+
+#slideshow #controls #dots li:active,
+#slideshow #controls #next:active,
+#slideshow #controls #prev:active {
+  transform: scale(1);
+}
+
+blockquote.blockquote {
+	margin-left: 60px;
+}
+
+blockquote.blockquote::before {
+	margin-left: 5px;
+}
+
+blockquote.blockquote p{
+	font-family: kotrag;
+	font-size: 20px;
+	color:black;
+}

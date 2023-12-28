@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- BEGIN HEAD -->
+
+<head>
+<meta charset="utf-8" />
+<title>Carnaria View</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- GLOBAL MANDATORY STYLES -->
+<link
+	href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/vendor/simple-line-icons/simple-line-icons.min.css}"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" type="text/css" />
+
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<link th:href="@{/css/animate.css}" rel="stylesheet">
+<link th:href="@{/vendor/swiper/css/swiper.min.css}" rel="stylesheet"
+	type="text/css" />
+
+<!-- THEME STYLES -->
+<link th:href="@{/css/layout.min.css}" rel="stylesheet" type="text/css" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico" />
+
+<!-- anychart -->
+<script
+	src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.11.1/js/anychart-bundle.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.11.1/js/anychart-base.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
+	rel="stylesheet">
+
+<link
+	href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css"
+	type="text/css" rel="stylesheet">
+
+<link
+	href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css"
+	type="text/css" rel="stylesheet">
+
+<link th:href="@{/css/products.css}" rel="stylesheet">
+
+<script defer th:src="@{/script/products.js}"></script>
+
+</head>
+<!-- END HEAD -->
+
+<!-- BODY -->
+
+<body>
+
+	<!--========== HEADER ==========-->
+	<header class="header navbar-fixed-top">
+		<!-- Navbar -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="menu-container">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".nav-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="toggle-icon"></span>
+					</button>
+
+					<!-- Logo -->
+					<div class="logo">
+						<a class="logo-wrap" th:href="@{/}"> <img
+							class="logo-img logo-img-main" th:src="@{/image/logo.png}"
+							alt="Asentus Logo"> <img class="logo-img logo-img-active"
+							th:src="@{/image/logo-dark.png}" alt="Asentus Logo">
+						</a>
+					</div>
+					<!-- End Logo -->
+				</div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover "
+                                    th:href="@{/}">Home</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active"
+                                    th:href="@{/products}">Service</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/insights}">Insight</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/community}">Community</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" 
+                            		th:href="@{/faq}">FAQ</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/contact}">Contact</a></li>
+							<li class="nav-item" sec:authorize="not isAuthenticated()">
+					            <div class="wraps">
+					               <a class="nav-item-child nav-item-hover" th:href="@{/signin}">
+					                  <button class="button2">Login</button></a>
+				            	</div>
+				         	</li>
+							<li class="nav-item" sec:authorize="isAuthenticated()">
+					            <div class="wraps">
+					               <a class="nav-item-child nav-item-hover" th:href="@{/signout}">
+					                  <button class="button2">Logout</button></a>
+				            	</div>
+				         	</li>
+				         	<li class="nav-item" sec:authorize="isAuthenticated()">
+		                        <span class="nav-item-child"
+		                           style="color:#17bed2; font-size: 16px;">[[${#authentication.name}]]님, 환영합니다!</span>
+		                     </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+			</div>
+		</nav>
+
+	</header>
+	<!--========== END HEADER ==========-->
+
+	<!--========== PARALLAX ==========-->
+	<div class="parallax-window" data-parallax="scroll"
+		data-image-src="image/01.jpg">
+		<div class="parallax-content container">
+			<h1 class="carousel-title">Service</h1>
+			<p style="color:white; font-weight: 200; font-size:20px;">다양한 산업과 분야에서 예측 분석을 필요로 하는 개인 및 기업을 위해 설계된 Products 페이지입니다.<br>Canaria View의 전문 알고리즘과 데이터 분석 도구를 활용하여 사용자들이 향후 동향과 예측 추세를 <br>시각적으로 파악할 수 있도록 도움을 드립니다.</p>
+		</div>
+	</div>
+	<!--========== PARALLAX ==========-->
+
+	<!--========== PAGE LAYOUT ==========-->
+
+
+	<!-- 0705 plot section -->
+	<div class="content-lg container" style="padding-bottom: 10px;">
+		<div class="row margin-b-40">
+			<div class="col-sm-6">
+				<h1 style="font-size: 350%; text-align: center; width:1170px;">Copper Prediction</h1>
+  				<p style="font-size: 180%; text-align:center; font-family: kotrag; width:1170px;">
+  					Canaria View의 예측 모델은 경제 지표와 산업 지표를 분석하여 구리 시장의 동향과 수급 상황을 예측합니다. 
+  					<br>이를 통해 사용자가 안정적인 구리 공급망 구축을 위한 전략적인 결정을 내릴 수 있도록 돕습니다.
+				</p>
+				<div class="row" style="margin-left: 80px;">
+					<div class="buttons" style="font-family: kotrag; font-weight: bold">
+						<input id="total" type="button" class="btn-hover color-9"
+							value="수요 - 공급"> <input id="demand" type="button"
+							class="btn-hover color-9" value="수요"> <input id="supply"
+							type="button" class="btn-hover color-9" value="공급">
+					</div>
+
+				</div>
+				<p id="plotTitle">World Copper Demand - Supply Predict (2001.01
+					~ 2023.09)</p>
+				<div class="row" style="width: 1250px;">
+					<div id="plotContainer"
+						style="height: 500px; width: 780px; display: inline-block;"></div>
+					<script defer id="myScript" th:src="@{/script/overviewChart.js}"></script>
+					<table border="1" class="trendTable"
+						style="text-align: center; font-family: kotrag; font-weight: bold; display: inline-block; border: none;">
+						<tbody>
+							<tr>
+								<th>Date</th>
+								<th style="width: 82px;">(D-S)</th>
+								<th>전월 대비 등락율(%)</th>
+								<th>상승/하락</th>
+							</tr>
+							<tr>
+								<td>2023-01</td>
+								<td>0.203</td>
+								<td>31.35%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-02</td>
+								<td>0.245</td>
+								<td>20.31%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-03</td>
+								<td>0.269</td>
+								<td>9.98%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-04</td>
+								<td>0.290</td>
+								<td>7.6%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-05</td>
+								<td>0.285</td>
+								<td>-1.65%</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-06</td>
+								<td>0.321</td>
+								<td>12.64%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-07</td>
+								<td>0.353</td>
+								<td>9.89%</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-08</td>
+								<td>0.321</td>
+								<td>-9.03%</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-09</td>
+								<td>0.313</td>
+								<td>-2.4%</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+						</tbody>
+					</table>
+					<table border="1" class="trendTable"
+						style="text-align: center; font-family: kotrag; font-weight: bold; display: none;">
+						<tbody>
+							<tr>
+								<th>Date</th>
+								<th style="width: 82px;">Demand</th>
+								<th>전월 대비 등락율(%)</th>
+								<th>상승/하락</th>
+							</tr>
+							<tr>
+								<td>2023-01</td>
+								<td>1.559</td>
+								<td>-0.002</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-02</td>
+								<td>1.553</td>
+								<td>-0.004</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-03</td>
+								<td>1.548</td>
+								<td>-0.003</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-04</td>
+								<td>1.543</td>
+								<td>-0.004</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-05</td>
+								<td>1.516</td>
+								<td>-0.017</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-06</td>
+								<td>1.485</td>
+								<td>-0.021</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-07</td>
+								<td>1.477</td>
+								<td>-0.005</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-08</td>
+								<td>1.457</td>
+								<td>-0.014</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-09</td>
+								<td>1.454</td>
+								<td>-0.002</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+						</tbody>
+					</table>
+					<table border="1" class="trendTable"
+						style="text-align: center; font-family: kotrag; font-weight: bold; display: none;">
+						<tbody>
+							<tr>
+								<th>Date</th>
+								<th style="width: 82px;">Supply</th>
+								<th>전월 대비 등락율(%)</th>
+								<th>상승/하락</th>
+							</tr>
+							<tr>
+								<td>2023-01</td>
+								<td>1.355</td>
+								<td>-0.037</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-02</td>
+								<td>1.308</td>
+								<td>-0.035</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-03</td>
+								<td>1.279</td>
+								<td>-0.023</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-04</td>
+								<td>1.253</td>
+								<td>-0.020</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-05</td>
+								<td>1.231</td>
+								<td>-0.018</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-06</td>
+								<td>1.163</td>
+								<td>-0.055</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-07</td>
+								<td>1.124</td>
+								<td>-0.034</td>
+								<td><img th:src="@{/image/downward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-08</td>
+								<td>1.136</td>
+								<td>0.010</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+							<tr>
+								<td>2023-09</td>
+								<td>1.140</td>
+								<td>0.004</td>
+								<td><img th:src="@{/image/upward.png}"
+									style="width: 15px; height: 15px;"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End plot section -->
+
+	<div class="bg-color-sky-light">
+		<div class="content-lg container" style="padding-top: 50px; padding-bottom:30px;">
+
+			<!-- 추가할 내용-->
+			<div class="row margin-b-40" style="width:1000px;">
+				<div class="col-sm-9" style="padding-left:0px;">
+					<section id="slideshow">
+						<div id="slidewindow">
+							<div>
+								<h2>구리 수요 추세선 산출 방식</h2>
+								<hr style="margin-top:0px;">
+								<img th:src="@{/image/demandplot.png}" style="width:470px; margin-left:120px;">
+								<img th:src="@{/image/demandchart.PNG}" style="width:280px;  margin-left:63px;">
+								<br>
+								<span style="padding-left:260px;">&lt;&nbsp;전세계 정제구리 수요 예측 그래프&nbsp;&gt;</span> 
+								<span style="padding-left:230px;">&lt;&nbsp;2023년 구리 수요 예측&nbsp;&gt;</span>
+                                <ul>
+                                	<li>	
+	                                    <p style="font-size:22px;">미국 주택착공지수<span style="font-size:16px; color:#444;">(HSI)</span>, 미국 산업생산지수<span style="font-size:15px; color:#444;">(IPI)</span>와 같은 수요의 대리 지표를 선정하여 데이터의 빈도수를 <br>월별 데이터로 재가공하였습니다.
+	                                    	<span style="color:#444; font-size:16px;">ex) 일별 데이터: 평균값 산출 / 분기별 데이터: 데이터 확장</span></p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">딥러닝을 통해 과거 12개월치 데이터를 학습한 뒤, 미래 6개월치 데이터를 예측하는 모델을 구축하였습니다.</p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">위의 그래프는 예측값을 지수이동평균선으로 나타낸 것으로 수요에 대한 추세를 확인할 수 있습니다. </p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">Canaria View의 수요 추세선에 의하면 <b>2023년 7월부터 9월까지 구리 수요가 <ins style="color:blue;">하락</ins>될 것으로 예상됩니다.</b></p>
+                                   	</li>
+                                </ul>
+							</div>
+							<div>
+								<h2>구리 공급 추세선 산출 방식</h2>
+								<hr style="margin-top:0px;">
+								<img th:src="@{/image/supplyplot.png}" style="width:470px; margin-left:130px;">
+								<img th:src="@{/image/supplychart.PNG}" style="width:280px;  margin-left:63px;">
+								<br>
+								<span style="padding-left:270px;">&lt;&nbsp;전세계 정제구리 공급 예측 그래프&nbsp;&gt;</span> 
+								<span style="padding-left:230px;">&lt;&nbsp;2023년 구리 공급 예측&nbsp;&gt;</span>
+                                <ul>
+                                	<li>	
+	                                    <p style="font-size:22px;">세계 최대 구리 생산국인 칠레의 경제 지표와 산업 지표를 중심으로 대리 지표를 선정하여 데이터의 빈도수를 
+	                                    <br>월별 데이터로 재가공하였습니다.&nbsp;<span style="color:#444; font-size:16px;">ex) 일별 데이터: 평균값 산출 / 분기별 데이터: 데이터 확장</span></p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">딥러닝을 통해 과거 12개월치 데이터를 학습한 뒤, 미래 6개월치 데이터를 예측하는 모델을 구축하였습니다.</p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">위의 그래프는 예측값을 지수이동평균선으로 나타낸 것으로 수요에 대한 추세를 확인할 수 있습니다. </p>
+                                    </li>
+                                    <li>
+                                    	
+                                    	<p style="font-size:22px;">Canaria View의 공급 추세선에 의하면 <b>지속적으로 하락세를 보이던 구리 공급 추세는 8월달을 기점으로 <br><ins style="color:red;">반등</ins>할 것으로 예상됩니다.</b></p>
+                                   	</li>
+                                </ul>
+							</div>
+							<div>
+								<h2 style="margin:25px 0px 15px 350px;">구리 수요 - 공급 추세선 산출 방식</h2>
+								<hr style="margin-top:0px;">
+								<img th:src="@{/image/dsplot.png}" style="width:470px; margin-left:120px;">
+								<img th:src="@{/image/dschart.PNG}" style="width:280px;  margin-left:63px;">
+								<br>
+								<span style="padding-left:260px;">&lt;&nbsp;전세계 정제구리 수요 - 공급 예측 그래프&nbsp;&gt;</span> 
+								<span style="padding-left:160px;">&lt;&nbsp;2023년 구리 수요 - 공급 예측&nbsp;&gt;</span>
+                                <ul>
+                                	<li>	
+	                                    <p style="font-size:22px;">단위가 일정한 수요와 공급 데이터를 분석 모델을 통해 예측 데이터를 생성하고 이를 표준화 및 병합하여 <br>하나의 그래프를 만들었습니다.</p>
+                                    </li>
+                                    <li>
+                                    	<p style="font-size:22px;">수요에서 공급을 뺀 수치를 데이터로 추출하여 0을 기준으로 0보다 크면 수요가 공급보다 큰 상황, <br>0보다 작으면 공급이 수요보다 큰 상황이라고 가정했습니다.</p> 
+                                    </li>
+                                    <li>
+                                    	<p style="margin-bottom:15px; font-size:22px;">Canaria View의 구리 수요 - 공급 추세선에 의하면 <b>수요와 공급의 간극이 <ins style="color:blue;">좁혀질 것</ins>으로 예상됩니다.</b></p>
+                                   	</li>
+                                </ul>
+								<span class="fweight-700 color-link" style="margin-left:880px;">다음 업데이트 시기: 2023년 8월</span>                                    
+							</div>
+						</div>
+						<div id="controls">
+							<a id="next">
+								<div></div>
+							</a>
+							<ul id="dots"></ul>
+							<a id="prev">
+								<div></div>
+							</a>
+						</div>
+					</section>
+
+				</div>
+			</div>
+		</div>
+	</div>
+			<!--// end row -->
+			<!-- End 추가할내용 -->
+			<div class="content-lg container" style="padding-top: 50px;">
+			<div class="row margin-b-40" style="padding-left:15px;">
+				<div class="col-sm-6">
+					<h2 style="font-size: 350%; text-align: center; width:1170px;">참고 그래프</h2>
+  					<p style="font-size: 180%; text-align:center; font-family: kotrag; width:1170px; margin-bottom:50px;">
+  						구리 가격과 재고량은 수급 상태를 반영하며, 수급 상황은 구리 가격에 영향을 줍니다. 이러한 상호 연관성을 고려하여 구리 시장의 수급 변동과 가격 변동을 예측하고, 이를 기반으로 적절한 의사 결정을 내릴 수 있습니다.
+					</p>
+					<h2></h2>
+					<p style="width:700px;"></p>
+				</div>
+				<div class="row" style="width: 1250px; height:402px;">
+					<!-- 수요 예측 성능 그래프 -->
+					<div id="priceContainer" style="height: 400px; width: 620px;"></div>
+					<script th:src="@{/script/priceChart.js}"></script>
+
+					<!-- 공급 예측 성능 그래프 -->
+					<div id="stockContainer" style="height: 400px; width: 620px;"></div>
+					<script th:src="@{/script/stockChart.js}"></script>
+				</div>
+				<div style="display: block; margin-top: 5px;">
+					<span style="margin-left: 530px;">단위: USD</span> <span
+						style="margin-left: 510px;">단위: 1,000,000 MT</span>
+				</div>
+				<div>
+					<p style="border:2px solid black; text-align:center; height:140px; font-size:24px; margin-top:5px; border-radius: 15px;">
+						<br>구리 공급이 수요보다 많을 때 가격은 <ins style="color:blue;">하락</ins>하며, 재고량이 <ins style="color:red;">증가</ins>합니다. <br>반면에, 수요가 공급을 초과할 때는 가격이 <ins style="color:red;">상승</ins>하고, 재고량이 <ins style="color:blue;">감소</ins>합니다.
+					</p>
+				</div>
+			</div>
+			</div>
+
+	<!--========== END PAGE LAYOUT ==========-->
+
+	<!--========== FOOTER ==========-->
+	<footer class="footer">
+		<!-- Links -->
+		<div class="footer-seperator">
+			<div class="content-lg container">
+				<div class="row" style="width: 1170px;">
+					<div class="col-sm-2 sm-margin-b-50">
+						<!-- List -->
+						<ul class="list-unstyled footer-list">
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/}">Home</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/products}">Service</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/insights}">Insight</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/community}">Community</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/faq}">FAQ</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/contact}">Contact</a></li>
+						</ul>
+						<!-- End List -->
+					</div>
+					<div class="col-sm-4 sm-margin-b-30">
+						<!-- List -->
+						<ul class="list-unstyled footer-list">
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Twitter</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Facebook</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Instagram</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">YouTube</a></li>
+						</ul>
+						<!-- End List -->
+					</div>
+					<div class="col-sm-5 sm-margin-b-30" style="margin-left:95px;">
+						<h2 class="color-white">Send Us A Note</h2>
+						<input type="text" class="form-control footer-input margin-b-20"
+							placeholder="Name" name="name" id="noteId" required> <input
+							type="email" class="form-control footer-input margin-b-20"
+							placeholder="Email" name="email" id="noteEmail" required>
+						<input type="text" class="form-control footer-input margin-b-20"
+							placeholder="Phone" name="phone" id="notePhone" required>
+						<textarea class="form-control footer-input margin-b-30" rows="6"
+							placeholder="Message" name="text" id="noteText" style="resize: none;" required></textarea>
+						<input type="button"
+							class="btn-theme btn-theme-sm btn-base-bg text-uppercase"
+							id="noteSubmit" value="Submit">
+					</div>
+					<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+					<script>
+						$(function() {
+
+							$("#noteSubmit").click(function() {
+								let sendData = {
+									"name" : $("#noteId").val(),
+									"email" : $("#noteEmail").val(),
+									"phone" : $("#notePhone").val(),
+									"text" : $("#noteText").val()
+								}
+
+								$.ajax({
+									url : "note",
+									method : "POST",
+									data : sendData,
+									success : function() {
+
+										alert("등록되었습니다.");
+
+										$("#noteId").val("");
+										$("#noteEmail").val("");
+										$("#notePhone").val("");
+										$("#noteText").val("");
+
+									}
+								})
+
+							});
+
+						});
+					</script>
+				</div>
+				<!--// end row -->
+			</div>
+		</div>
+		<!-- End Links -->
+
+		<!-- Copyright -->
+		<div class="content container">
+			<div class="row"
+				style="display: flex; justify-content: space-between;">
+				<div class="col-xs-6">
+					<img class="footer-logo" th:src="@{/image/logo.png}"
+						alt="Carnaria Logo">
+				</div>
+            <div class="col-xs-6 text-right">
+               <p class="margin-b-0">
+                  <a class="color-base fweight-700" href="#" style="font-size:20px;">K-Digital
+                     Training Final Project</a>
+               </p>
+            </div>
+			</div>
+			<!--// end row -->
+		</div>
+		<!-- End Copyright -->
+	</footer>
+	<!--========== END FOOTER ==========-->
+
+	<!-- Back To Top -->
+	<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+	<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- CORE PLUGINS -->
+	<script th:src="@{/vendor/jquery.min.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery-migrate.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"
+		type="text/javascript"></script>
+
+	<!-- PAGE LEVEL PLUGINS -->
+	<script th:src="@{/vendor/jquery.easing.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery.back-to-top.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery.wow.min.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/swiper/js/swiper.jquery.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/masonry/jquery.masonry.pkgd.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/masonry/imagesloaded.pkgd.min.js}"
+		type="text/javascript"></script>
+
+	<!-- PAGE LEVEL SCRIPTS -->
+	<script th:src="@{/script/layout.min.js}" type="text/javascript"></script>
+	<script th:src="@{/script/components/wow.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/script/components/swiper.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/script/components/masonry.min.js}"
+		type="text/javascript"></script>
+
+</body>
+<!-- END BODY -->
+
+</html>

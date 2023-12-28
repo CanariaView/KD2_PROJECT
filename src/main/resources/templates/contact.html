@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- BEGIN HEAD -->
+
+<head>
+<meta charset="utf-8" />
+<title>Carnaria View</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- GLOBAL MANDATORY STYLES -->
+<link
+	href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/vendor/simple-line-icons/simple-line-icons.min.css}"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"
+	type="text/css" />
+
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<link th:href="@{/css/animate.css}" rel="stylesheet">
+<link th:href="@{/vendor/swiper/css/swiper.min.css}" rel="stylesheet"
+	type="text/css" />
+
+<!-- THEME STYLES -->
+<link th:href="@{/css/layout.min.css}" rel="stylesheet" type="text/css" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico" />
+
+<!-- Message-->
+<style>
+#message {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	max-width: 500px;
+	/* 최대 너비 설정 */
+	margin: 0 auto;
+	/* 가운데 정렬 */
+	padding: 0px;
+	/* 내부 여백 설정 */
+}
+
+#message h2.color {
+    margin-top: 0;
+}
+
+.parallax-window {
+	background-image: url('/project/image/1920x1080/01.jpg');
+}
+
+.footer {
+	background-image: url('/project/image/1920x1080/03.jpg');
+	 
+}
+.loginSection {
+	position: fixed;
+	top:1%;
+	right:1%;
+}
+
+.wraps {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button2 {
+    margin-top: 10px;
+    width: 85px;
+    height: 30px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button2:hover {
+    background-color: #17bed2;
+    box-shadow: 0px 15px 20px rgba(23, 190, 210, 0.4);
+    color: #fff;
+}
+
+.loginMember {
+	position: fixed;
+	top: 1%;
+	right:1%;
+}
+</style>
+
+
+</head>
+<!-- END HEAD -->
+
+<!-- BODY -->
+
+<body>
+
+	<!--========== HEADER ==========-->
+    <header class="header navbar-fixed-top">
+        <!-- Navbar -->
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="menu-container">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="toggle-icon"></span>
+                    </button>
+
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a class="logo-wrap" th:href="@{/}">
+                            <img class="logo-img logo-img-main" th:src="@{/image/logo.png}" alt="Asentus Logo">
+                            <img class="logo-img logo-img-active" th:src="@{/image/logo-dark.png}" alt="Asentus Logo">
+                        </a>
+                    </div>
+                    <!-- End Logo -->
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse nav-collapse">
+                    <div class="menu-container">
+                        <ul class="navbar-nav navbar-nav-right">
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover "
+                                    th:href="@{/}">Home</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/products}">Service</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/insights}">Insight</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                                    th:href="@{/community}">Community</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover" 
+                            		th:href="@{/faq}">FAQ</a></li>
+                            <li class="nav-item"><a class="nav-item-child nav-item-hover active"
+                                    th:href="@{/contact}">Contact</a></li>
+							<li class="nav-item" sec:authorize="not isAuthenticated()">
+					            <div class="wraps">
+					               <a class="nav-item-child nav-item-hover" th:href="@{/signin}">
+					                  <button class="button2">Login</button></a>
+				            	</div>
+				         	</li>
+							<li class="nav-item" sec:authorize="isAuthenticated()">
+					            <div class="wraps">
+					               <a class="nav-item-child nav-item-hover" th:href="@{/signout}">
+					                  <button class="button2">Logout</button></a>
+				            	</div>
+				         	</li>
+				         	<li class="nav-item" sec:authorize="isAuthenticated()">
+		                        <span class="nav-item-child"
+		                           style="color:#17bed2; font-size: 16px;">[[${#authentication.name}]]님, 환영합니다!</span>
+		                     </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Navbar Collapse -->
+            </div>
+        </nav>
+        
+    </header>
+    <!--========== END HEADER ==========-->
+
+    <!--========== PARALLAX ==========-->
+    <div class="parallax-window" data-parallax="scroll" data-image-src="img/1920x1080/01.jpg">
+        <div class="parallax-content container">
+            <h1 class="carousel-title">Contact</h1>
+            <p style="color:white; font-weight: 200; font-size:20px;">Canaria View와 국제 원자재 SCM 관련된 궁금하시거나 불편한 사항에 대해 문의주시면
+                <br>성심성의를 다하여 답변해드립니다. <br />
+            </p>
+        </div>
+    </div>
+    <!--========== PARALLAX ==========-->
+
+	<!--========== PAGE LAYOUT ==========-->
+	<div class="section-seperator">
+		<div class="content-lg container">
+			<div class="row">
+				<!-- Left Side -->
+				<div class="col-lg-6">
+					<!-- Message -->
+
+                    <div id="message">
+                        <h2 class="color">Send Us A Note</h2>
+                        <form th:action="@{/note}" method="POST">
+	                        <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" id="noteId" name="name" required>
+	                        <input type="email" class="form-control footer-input margin-b-20" placeholder="Email" id="noteEmail"name="email" required>
+	                        <input type="text" class="form-control footer-input margin-b-20" placeholder="Phone" id="notePhone" name="phone" required>
+	                        <textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Message" id="noteText" name="text"
+	                            style="resize: none;" required></textarea>
+	                       <input type="button" class="btn-theme btn-theme-sm btn-base-bg text-uppercase" id="noteSubmit"
+                     value="Submit">
+                        </form>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	               <script>
+	               		$(function() {
+	               			
+	               			$("#noteSubmit").click(function() {
+	                   			let sendData = {"name": $("#noteId").val(), 
+	         							"email":$("#noteEmail").val(),
+	         							"phone":$("#notePhone").val(),
+	         							"text":$("#noteText").val()}
+	           			
+			           			$.ajax({
+			           				url:"note",
+			           				method:"POST",
+			           				data:sendData,
+			           				success:function() {
+			           					
+			           					alert("등록되었습니다.");
+			           					
+			           					$("#noteId").val(""); 
+			    						$("#noteEmail").val("");
+			     						$("#notePhone").val("");
+			     						$("#noteText").val("");
+			       			
+			           				}
+			             		})
+	               				
+	               			});
+	               			
+	               		});
+	               	
+	               </script>
+                    
+                    <!-- Conclude -->
+                    <h1 style="text-align: center; margin-top:2.3em">We're here to listen!</h1>
+                    <div id="social-links" style="display: flex; justify-content: center; list-style-type: none;">
+                        <a href="https://twitter.com/kita_net" target='_blank'>
+                        	<img th:src="@{/image/contact/01.png}" alt="twitter logo" style="padding-right: 20px;"></a>
+                        <a href="https://www.linkedin.com/company/korea-international-trade-association-kita-/?originalSubdomain=kr" target='_blank'>
+                        	<img th:src="@{/image/contact/02.png}" alt="linkedin logo" style="padding-right: 20px;"></a>
+                        <a href="https://www.facebook.com/KITA.fb/" target="_blank">
+                        	<img th:src="@{/image/contact/03.png}" alt="facebook logo"></a>
+                    </div>
+				</div>
+
+                <!-- Right Side -->
+                <div class="col-lg-6">
+                    <!-- Contact Lists -->
+                    <div class="col-sm-12 sm-margin-b-50">
+                        <div class="wow fadeInLeft" data-wow-duration=".3" data-wow-delay=".3s">
+                            <!-- Office list for 대한민국 -->
+                            <div class="col-sm-12 sm-margin-b-50">
+                                <h3><a href="#">대한민국</a> <span class="text-uppercase margin-l-20">서울 사무소</span>
+                                    <img th:src="@{/image/contact2/01.png}" alt="korea flag"
+                                        style="height: 40px; border: 2px solid black; margin-left: 20px;">
+                                </h3>
+                                <p>서울시 강남구 영동대로 511 (삼성동), <br>무역아카데미 (코엑스 4층)</p>
+                                <ul class="list-unstyled contact-list">
+                                    <li><i class="margin-r-10 color-base icon-call-out"></i> 82 010 4561 7890</li>
+                                    <li><i class="margin-r-10 color-base icon-envelope"></i>
+                                        contactkorea@canariaview.com
+                                    </li>
+                                    <hr>
+                                </ul>
+                            </div>
+                            <!-- Office list for 칠레 -->
+                            <div class="col-sm-12 sm-margin-b-50">
+                                <h3><a href="#">칠레&nbsp;&nbsp;</a> <span class="text-uppercase margin-l-20">산티아고
+                                        사무소</span>
+                                    <img th:src="@{/image/contact2/02.png}" alt="chile flag"
+                                        style="height: 40px; border: 2px solid black; margin-left: 25px;">
+                                </h3>
+                                <p>Los Militares 5953, Oficina 1508, Britania Building, Las Condes, Santiago, Chile</p>
+                                <ul class="list-unstyled contact-list">
+                                    <li><i class="margin-r-10 color-base icon-call-out"></i> 56 2 5652 1742</li>
+                                    <li><i class="margin-r-10 color-base icon-envelope"></i>
+                                        contactchile@canariaview.com
+                                    </li>
+                                    <hr>
+                                </ul>
+                            </div>
+                            <!-- Office list for 미국 -->
+                            <div class="col-sm-12 sm-margin-b-50">
+                                <h3><a href="#">미국&nbsp;&nbsp;</a> <span class="text-uppercase margin-l-20">보스턴
+                                        사무소</span>
+                                    <img th:src="@{/image/contact2/03.png}" alt="us flag"
+                                        style="height: 40px; width: 58.61px; border: 2px solid black; margin-left: 38px;">
+                                </h3>
+                                <p>135 Hillsdale Rd, Somerville, MA 02144 USA</p>
+                                <ul class="list-unstyled contact-list">
+                                    <li><i class="margin-r-10 color-base icon-call-out"></i> 1 774 240 9944</li>
+                                    <li><i class="margin-r-10 color-base icon-envelope"></i> contactus@canariaview.com
+                                    </li>
+                                    <hr>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Office image -->
+                    <img class="img-responsive" th:src="@{image/contact.jpg}" alt="Our Office">
+                </div>
+			</div>
+		</div>
+	</div>
+
+	<!--========== END PAGE LAYOUT ==========-->
+
+	<!--========== FOOTER ==========-->
+	<footer class="footer">
+		<!-- Copyright -->
+		<div class="content container">
+			<div class="row">
+				<div class="col-xs-6">
+					<img class="footer-logo" th:src="@{/image/logo.png}" alt="Carnaria Logo">
+				</div>
+            <div class="col-xs-6 text-right">
+               <p class="margin-b-0">
+                  <a class="color-base fweight-700" href="/project/data/프레젠테이션2.pptx" style="font-size:20px;" download>K-Digital
+                     Training Final Project</a>
+               </p>
+            </div>
+			</div>
+			<!--// end row -->
+		</div>
+		<!-- End Copyright -->
+	</footer>
+	<!--========== END FOOTER ==========-->
+
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+    <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <!-- CORE PLUGINS -->
+    <script th:src="@{/vendor/jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/jquery-migrate.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
+    <!-- PAGE LEVEL PLUGINS -->
+    <script th:src="@{/vendor/jquery.easing.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/jquery.back-to-top.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/jquery.wow.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/swiper/js/swiper.jquery.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/masonry/jquery.masonry.pkgd.min.js}" type="text/javascript"></script>
+    <script th:src="@{/vendor/masonry/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script th:src="@{/script/layout.min.js}" type="text/javascript"></script>
+    <script th:src="@{/script/components/wow.min.js}" type="text/javascript"></script>
+    <script th:src="@{/script/components/swiper.min.js}" type="text/javascript"></script>
+    <script th:src="@{/script/components/masonry.min.js}" type="text/javascript"></script>
+
+
+</body>
+<!-- END BODY -->
+
+</html>
