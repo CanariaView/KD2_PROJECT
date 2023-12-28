@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- nameSpace란에는 interface의 전체 이름을 기재(경로 포함) -->
+<!-- mapper 안에는 완성된 메소드만 넣어야 함! -->
+<mapper namespace="net.kdigital.project.mapper.MenuMapper">
+
+	<select id="getEmail" resultType="String" parameterType="String">
+		SELECT email
+		FROM p_member
+		WHERE
+			memberid = #{memberid}
+	</select>
+	
+	<select id="getImageseq" resultType="int" parameterType="String">
+		SELECT imageseq
+		FROM p_member
+		WHERE
+			memberid = #{memberid}
+	</select>
+	
+	<select id="selectReplyAll" resultType="Reply">
+		SELECT *
+		FROM p_reply
+	</select>
+	
+	<insert id="insertReply" parameterType="Reply">
+		INSERT INTO p_reply
+		(replyseq
+		, memberid
+		, text
+		, imageseq)
+		VALUES
+		(replySeq.NEXTVAL
+		, #{memberid}
+		, #{text}
+		, #{imageseq}
+		)
+	</insert>
+	
+	<delete id="deleteReply" parameterType="String">
+		DELETE FROM p_reply
+		WHERE 
+			replyseq = #{replyseq}
+	</delete>
+	
+
+</mapper>

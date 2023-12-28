@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Canaria View</title>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta content="width=device-width, initial-scale=1" name="viewport" />
+   <meta content="" name="description" />
+   <meta content="" name="author" />
+
+   <!-- GLOBAL MANDATORY STYLES -->
+   <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+   <link th:href="@{/vendor/simple-line-icons/simple-line-icons.min.css}" rel="stylesheet" type="text/css" />
+   <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+
+   <!-- PAGE LEVEL PLUGIN STYLES -->
+   <link th:href="@{/css/animate.css}" rel="stylesheet">
+   <link th:href="@{/vendor/swiper/css/swiper.min.css}" rel="stylesheet" type="text/css" />
+
+   <!-- THEME STYLES -->
+   <link th:href="@{/css/layout.min.css}" rel="stylesheet" type="text/css" />
+
+   <!-- Favicon -->
+   <link rel="shortcut icon" href="favicon.ico" />
+
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+
+   <!-- anychart -->
+   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-bundle.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-base.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+   <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+
+   <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+
+   <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+   
+   <link rel="stylesheet" th:href="@{/css/index.css}"/>
+
+   <script>
+	   function showAlert() {
+			alert("시스템 개설 중입니다");
+		}
+   </script>
+
+</head>
+
+<body>
+   <!--========== HEADER ==========-->
+   <header class="header navbar-fixed-top">
+      <!-- Navbar -->
+      <nav class="navbar" role="navigation">
+         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="menu-container">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="toggle-icon"></span>
+               </button>
+
+               <!-- Logo -->
+               <div class="logo">
+                  <a class="logo-wrap" th:href="@{/}">
+                     <img class="logo-img logo-img-main" th:src="@{/image/logo.png}" alt="Asentus Logo">
+                     <img class="logo-img logo-img-active" th:src="@{/image/logo-dark.png}" alt="Asentus Logo">
+                  </a>
+               </div>
+               <!-- End Logo -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse nav-collapse">
+               <div class="menu-container">
+                  <ul class="navbar-nav navbar-nav-right">
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover active" th:href="@{/}">Home</a></li>
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                             th:href="@{/products}">Service</a></li>
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover"
+                             th:href="@{/insights}">Insight</a></li>
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover" th:href="@{/community}">Community</a>
+                     </li>
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover" th:href="@{/faq}">FAQ</a></li>
+                     <li class="nav-item"><a class="nav-item-child nav-item-hover" th:href="@{/contact}">Contact</a>
+                     </li>
+                     <li class="nav-item" sec:authorize="not isAuthenticated()">
+                        <div class="wraps">
+                           <a class="nav-item-child nav-item-hover" th:href="@{/signin}">
+                              <button class="button2">Login</button></a>
+                        </div>
+                     </li>
+                     <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <div class="wraps">
+                           <a class="nav-item-child nav-item-hover" th:href="@{/signout}">
+                              <button class="button2">Logout</button></a>
+                        </div>
+                     </li>
+                     <li class="nav-item"  sec:authorize="isAuthenticated()">
+                        <span class="nav-item-child"
+                           style="color:#17bed2; font-size: 16px; font-family: kotrag; ">[[${#authentication.name}]]님, 환영합니다!</span>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <!-- End Navbar Collapse -->
+         </div>
+      </nav>
+
+   </header>
+   <!--========== END HEADER ==========-->
+
+   <!--========== SLIDER ==========-->
+   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <div class="container">
+         <!-- Indicators -->
+         <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+         </ol>
+      </div>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+         <div class="item active">
+            <img class="img-responsive" th:src="@{/image/1920x1080/01.jpg}" alt="Slider Image">
+            <div class="container">
+               <div class="carousel-centered">
+                  <div class="margin-b-40">
+                     <h1 class="carousel-title">Canaria View</h1>
+                     <p style="color: white; font-size: 20px;">
+                        Providing a SCM model that predicts imbalances in raw material
+                        demand and supply, <br />just like the canary that predicted
+                        mining hazards.
+                     </p>
+                  </div>
+                  <a th:href="@{/products}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+               </div>
+            </div>
+         </div>
+         <div class="item">
+            <img class="img-responsive" th:src="@{/image/1920x1080/02.jpg}" alt="Slider Image">
+            <div class="container">
+               <div class="carousel-centered">
+                  <div class="margin-b-40">
+                     <h2 class="carousel-title">Canaria View</h2>
+                     <p style="color: white; font-size: 20px; font-family: kotrag; ">
+                        광산의 위험을 예측했던 카나리아 처럼<br> 원자재 수급 불균형을 예측하는 SCM모델을 제공합니다.
+                     </p>
+                  </div>
+                  <a th:href="@{/products}" class="btn-theme btn-theme-sm btn-white-brd text-uppercase">Explore</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--========== SLIDER ==========-->
+
+   <!--========== PAGE LAYOUT ==========-->
+<div class="content-lg container" style="margin:0 0 0 0; padding-top:5%; padding-bottom:2%; width:100%;">
+	<div class="col-sm-6" style="margin-top:2%">
+	   <h1 style="font-size: 350%; text-align: center;"><i>Embrace Clarity, Foster Insight</i></h1>
+	   <p style="font-size: 180%; text-align: center; margin: 50px 50px; font-family: kotrag; ">
+	      Canaria View는 국내 대부분의 광물 수요가 해외 수입에 <br>의존하는 우리나라의 국가 첨단 산업의 지속 가능한 발전을 <br>위해 수급 및 공급 리스크 예측 서비스를 제공합니다.</p>
+	</div>
+	<video style="width: 45%; display: inline-block; margin-left:3%;" autoplay="autoplay" muted="muted" loop="loop" controls>
+	   <source th:src="@{/image/index.mp4}" type="video/mp4">
+	</video>
+</div>
+<!-- 07.12 Preview -->
+
+<!-- 07.13 Service -->
+
+<hr style="width:90%; border-color:#999; ">
+
+<div class="content-lg container" style="margin:0 0 0 0; padding-top:2%; padding-bottom:2%; width:100%;">
+<h1 style="font-size: 350%; text-align: center;">About Service</h1>
+  <p style="font-size: 180%; text-align:center; font-family: kotrag; ">경제 지표·산업 지표 분석을 통한 원자재 수급 안정화 예측 모델은 다음과 같습니다.</p>
+  <ul class="tilesWrap">
+         <li>
+            <h2>01</h2>
+            <h3>Demand Prediction</h3>
+            <p style="margin-bottom: 30px; font-family: kotrag; ">
+            	2023년 9월까지의 세계 원자재 수요 예측 추세선을 통해 안정적인 공급망 관리를 도와드립니다.
+            </p>
+            <a th:href="@{/products}"><button class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Read
+                  more</button></a>
+         </li>
+         <li>
+            <h2>02</h2>
+            <h3>Supply Prediction</h3>
+            <p style="margin-bottom: 30px;">
+               2023년 9월까지의 세계 원자재 공급 예측 추세선을 통해 안정적인 공급망 관리를 도와드립니다.
+            </p>
+            <a th:href="@{/products}"><button class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Read
+                  more</button></a>
+         </li>
+         <li>
+            <h2>03</h2>
+            <h3>Demand & Supply Gap</h3>
+            <p style="margin-bottom: 30px;">
+               원자재 시장의 수요와 공급의 <br>상호작용을 고려한 종합적인 <br>예측 추세를 확인할 수 있습니다.
+            </p>
+            <a th:href="@{/products}"><button class="btn-theme btn-theme-sm btn-default-bg text-uppercase">Read
+                  more</button></a>
+         </li>
+      </ul>
+      
+      </div>
+<hr style="width:90%; border-color:#999; ">
+<!-- 07.13 Service -->   
+    
+
+<div class="content-lg container" style="margin:0 0 0 0; padding-top:2%; padding-bottom:0%; width:100%;">
+   <h1 style="font-size: 350%; text-align: center;">Model Reviews</h1>
+       <p style="font-size: 180%; margin: 20px 200px; text-align:center;">
+            2018년 3월부터 2023년 3월까지 5년간 구리 수요와 공급의 실제 추세와 예측 추세를 비교했습니다.<br>
+            대리 지표를 이용하여 만든 모델임에도 불구하고, 예측 추세는 실제 추세를 잘 반영하고 있습니다.
+       </p>
+      <div class="row" style="display: flex; padding: 1% 3% 3% 7%; width: 100%; text-align:center;">
+
+         <!-- 수요 예측 성능 그래프 -->
+         <div id="demandContainer" style="height: 450px; width: 750px;"></div>
+         <script th:src="@{/script/demandChart.js}"></script>
+
+         <!-- 공급 예측 성능 그래프 -->
+         <div id="supplyContainer" style="height: 450px; width:750px;"></div>
+         <script th:src="@{/script/supplyChart.js}"></script>
+      </div>
+</div>
+      <hr style="width:90%; border-color:#999; ">
+      <!--// end row -->
+   <!-- 2023.07.05 작성 End Model Reviews -->
+
+   <!-- Pricing -->
+<!-- 0706 버튼 누르면 경고창만 뜨게 수정 -->
+<h1 style="font-size: 50px; text-align: center; margin-top: 50px;">Subscribe Us</h1>
+<p style="font-size: 30px; margin: 20px 200px; text-align:center;">Canaria View의 구독 정보는 다음과 같습니다.</p>
+ 
+ <div class="pricing-table">
+    <div class="pricing-option">
+        <i class="material-icons">important_devices</i>
+        <h1>Basic Fee</h1>
+        <hr />
+        <p style="font-size:25px; color:black;">기본 요금은 웹 서비스의 기본적인 기능 및 서비스 이용에 대한 비용입니다.
+        기본 요금에는 웹 사이트 또는 애플리케이션의 호스팅 및 기본적인 기능, 보안 패치 및 업데이트, 기술 지원 등이 포함됩니다.
+        </p>
+        <hr />
+        <div class="price">
+            <div class="front">
+                <span class="price">69,000 <b>KRW</b></span>
+            </div>
+            <div class="back">
+                <a class="button" onclick="showAlert()">Subscribe now</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pricing-option">
+        <i class="material-icons">perm_identity</i>
+        <h1>Expert Fee</h1>
+        <hr />
+        <p style="color:black;">전문가용 요금은 선택적으로 이용할 수 있는 특별한 기능 또는 서비스에 대한 비용입니다.
+        전문가용 요금은 사용자 정의 기능, 데이터베이스 액세스, 확장된 보안 기능, API 액세스 등과 같은 웹 서비스의 추가 기능을 포함합니다. 이러한 기능은 웹 사이트 또는 애플리케이션의 확장성과 기능성을 향상시킵니다.</p>
+        <hr />
+        <div class="price">
+            <div class="front">
+                <span class="price">159,000 <b>KRW</b></span>
+            </div>
+            <div class="back">
+                <a class="button" onclick="showAlert()">Subscribe now</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="pricing-option">
+        <i class="material-icons">art_track</i>
+        <h1>Enterprise Fee</h1>
+        <hr />
+        <p style="color:black;">엔터프라이즈 요금은 기업이나 대규모 조직을 위한 전문적인 서비스와 지원에 대한 비용입니다.
+        엔터프라이즈 요금은 사용자 정의 솔루션, 전용 서버, 우선 기술 지원, 컨설팅 서비스, 서비스 수준 계약 등을 포함합니다. 기업 고객의 요구에 맞게 특별히 맞춤화된 서비스와 솔루션을 제공합니다.
+        </p>
+        <hr />
+        <div class="price">
+            <div class="front">
+                <span class="price">249,000<b>KRW</b></span>
+            </div>
+            <div class="back">
+                <a class="button" onclick="showAlert()">Subscribe now</a>
+            </div>
+        </div>
+    </div>
+</div>        
+   <!-- End Pricing -->
+
+   <!-- Clients -->
+   <div class="bg-color-sky-light">
+   <div class="content-lg container">
+      <!-- Swiper Clients -->
+      <p style="font-size: 40px; text-align: center; margin-top: 50 px; color:#555;"><i>Access to our trusted partners,
+	   <br>Collectively shaping the future of the SCM ecosystem 
+	   <br>With Canaria View</i>
+      <div class="swiper-slider swiper-clients">
+         <!-- Swiper Wrapper -->
+         <div class="swiper-wrapper">
+            <div class="swiper-slide">
+               <a href="https://www.kita.net/"> <img class="swiper-clients-img" th:src="@{/image/clients/01.png}"
+                     alt="Clients Logo" >
+               </a>
+            </div>
+            <div class="swiper-slide">
+               <a href="http://www.jwccs.co.kr/main/main.php"> <img class="swiper-clients-img"
+                     th:src="@{/image/clients/02.png}" alt="Clients Logo">
+               </a>
+            </div>
+            <div class="swiper-slide">
+               <a href="https://www.statista.com/"> <img class="swiper-clients-img" th:src="@{/image/clients/03.png}"
+                     alt="Clients Logo">
+               </a>
+            </div>
+            <div class="swiper-slide">
+               <a href="https://softsociety.net/rainbow;jsessionid=590BDD5F1D49280579D83B0464B647C1">
+                  <img class="swiper-clients-img" th:src="@{/image/clients/04.png}" alt="Clients Logo">
+               </a>
+            </div>
+            <div class="swiper-slide">
+               <a href="https://www.antofagasta.co.uk/"> <img class="swiper-clients-img"
+                     th:src="@{/image/clients/05.png}" alt="Clients Logo">
+               </a>
+            </div>
+            <div class="swiper-slide">
+               <a href="https://www.spglobal.com/en/"> <img class="swiper-clients-img" th:src="@{/image/clients/06.png}"
+                     alt="Clients Logo">
+               </a>
+            </div>
+         </div>
+         <!-- End Swiper Wrapper -->
+      </div>
+   </div>
+   </div>
+   <!-- End Swiper Clients -->
+   <!-- End Clients -->
+
+   <!-- End Work -->
+   <!--========== END PAGE LAYOUT ==========-->
+
+   <!--========== FOOTER ==========-->
+   <footer class="footer">
+      <!-- Links -->
+      <div class="footer-seperator">
+         <div class="content-lg container">
+            <div class="row">
+               <div class="col-sm-2 sm-margin-b-50">
+                  <!-- List -->
+                  <ul class="list-unstyled footer-list">
+                     <li class="footer-list-item"><a class="footer-list-link" th:href="@{/}">Home</a></li>
+					<li class="footer-list-item"><a class="footer-list-link"
+						th:href="@{/products}">Service</a></li>
+					<li class="footer-list-item"><a class="footer-list-link"
+						th:href="@{/insights}">Insight</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" th:href="@{/community}">Community</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" th:href="@{/faq}">FAQ</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" th:href="@{/contact}">Contact</a></li>
+                  </ul>
+                  <!-- End List -->
+               </div>
+               <div class="col-sm-4 sm-margin-b-30">
+                  <!-- List -->
+                  <ul class="list-unstyled footer-list">
+                     <li class="footer-list-item"><a class="footer-list-link" href="#">Twitter</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" href="#">Facebook</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" href="#">Instagram</a></li>
+                     <li class="footer-list-item"><a class="footer-list-link" href="#">YouTube</a></li>
+                  </ul>
+                  <!-- End List -->
+               </div>
+               <div class="col-sm-5 sm-margin-b-30" style="margin-left:95px;">
+                  <h2 class="color-white">Send Us A Note</h2>
+                  <input type="text" class="form-control footer-input margin-b-20" placeholder="Name" name="name"
+                     id="noteId" required>
+                  <input type="email" class="form-control footer-input margin-b-20" placeholder="Email" name="email"
+                     id="noteEmail" required>
+                  <input type="text" class="form-control footer-input margin-b-20" placeholder="Phone" name="phone"
+                     id="notePhone" required>
+                  <textarea class="form-control footer-input margin-b-30" rows="6" placeholder="Message" name="text"
+                     id="noteText" style="resize: none;" required></textarea>
+                  <input type="button" class="btn-theme btn-theme-sm btn-base-bg text-uppercase" id="noteSubmit"
+                     value="Submit">
+               </div>
+               <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+               <script>
+                  $(function () {
+
+                     $("#noteSubmit").click(function () {
+                        let sendData = {
+                           "name": $("#noteId").val(),
+                           "email": $("#noteEmail").val(),
+                           "phone": $("#notePhone").val(),
+                           "text": $("#noteText").val()
+                        }
+
+                        $.ajax({
+                           url: "note",
+                           method: "POST",
+                           data: sendData,
+                           success: function () {
+
+                              alert("등록되었습니다.");
+
+                              $("#noteId").val("");
+                              $("#noteEmail").val("");
+                              $("#notePhone").val("");
+                              $("#noteText").val("");
+
+                           }
+                        })
+
+                     });
+
+                  });
+
+               </script>
+            </div>
+            <!--// end row -->
+         </div>
+      </div>
+      <!-- End Links -->
+
+      <!-- Copyright -->
+      <div class="content container">
+         <div class="row">
+            <div class="col-xs-6">
+               <img class="footer-logo" th:src="@{/image/logo.png}" alt="Carnaria Logo">
+            </div>
+            <div class="col-xs-6 text-right">
+               <p class="margin-b-0">
+                  <a class="color-base fweight-700" href="#" style="font-size:20px;">K-Digital
+                     Training Final Project</a>
+               </p>
+            </div>
+         </div>
+         <!--// end row -->
+      </div>
+      <!-- End Copyright -->
+   </footer>
+   <!--========== END FOOTER ==========-->
+
+   <!-- Back To Top -->
+   <a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+   <!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+   <!-- CORE PLUGINS -->
+   <script th:src="@{/vendor/jquery.min.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/jquery-migrate.min.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}" type="text/javascript"></script>
+
+   <!-- PAGE LEVEL PLUGINS -->
+   <script th:src="@{/vendor/jquery.easing.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/jquery.back-to-top.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/jquery.wow.min.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/swiper/js/swiper.jquery.min.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/masonry/jquery.masonry.pkgd.min.js}" type="text/javascript"></script>
+   <script th:src="@{/vendor/masonry/imagesloaded.pkgd.min.js}" type="text/javascript"></script>
+
+   <!-- PAGE LEVEL SCRIPTS -->
+   <script th:src="@{/script/layout.min.js}" type="text/javascript"></script>
+   <script th:src="@{/script/components/wow.min.js}" type="text/javascript"></script>
+   <script th:src="@{/script/components/swiper.min.js}" type="text/javascript"></script>
+   <script th:src="@{/script/components/masonry.min.js}" type="text/javascript"></script>
+
+</body>
+
+</html>

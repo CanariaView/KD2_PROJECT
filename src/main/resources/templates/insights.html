@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>Carnaria View</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+
+<!-- GLOBAL MANDATORY STYLES -->
+<link
+	href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700"
+	rel="stylesheet" type="text/css">
+<link th:href="@{/vendor/simple-line-icons/simple-line-icons.min.css}"
+	rel="stylesheet" type="text/css" />
+<link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" type="text/css" />
+
+<!-- PAGE LEVEL PLUGIN STYLES -->
+<link th:href="@{/css/animate.css}" rel="stylesheet">
+<link th:href="@{/vendor/swiper/css/swiper.min.css}" rel="stylesheet"
+	type="text/css" />
+
+<!-- THEME STYLES -->
+<link th:href="@{/css/layout.min.css}" rel="stylesheet" type="text/css" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="favicon.ico" />
+
+<!-- Tag Cloud -->
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+<script
+	src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+<script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/8.11.1/js/anychart-tag-cloud.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/v8/themes/light_glamour.min.js"></script>
+<script
+	src="https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js"></script>
+
+<link
+	href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css"
+	type="text/css" rel="stylesheet">
+<link
+	href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css"
+	type="text/css" rel="stylesheet">
+
+<script defer th:src="@{/script/insights.js}"></script>
+
+<link th:href="@{/css/insights.css}" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!--========== HEADER ==========-->
+	<header class="header navbar-fixed-top">
+		<!-- Navbar -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="menu-container">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".nav-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="toggle-icon"></span>
+					</button>
+
+					<!-- Logo -->
+					<div class="logo">
+						<a class="logo-wrap" th:href="@{/}"> <img
+							class="logo-img logo-img-main" th:src="@{/image/logo.png}"
+							alt="Asentus Logo"> <img class="logo-img logo-img-active"
+							th:src="@{/image/logo-dark.png}" alt="Asentus Logo">
+						</a>
+					</div>
+					<!-- End Logo -->
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-collapse">
+					<div class="menu-container">
+						<ul class="navbar-nav navbar-nav-right">
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover" th:href="@{/}">Home</a></li>
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover" th:href="@{/products}">Service</a></li>
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover active"
+								th:href="@{/insights}">Insight</a></li>
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover" th:href="@{/community}">Community</a></li>
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover" th:href="@{/faq}">FAQ</a></li>
+							<li class="nav-item"><a
+								class="nav-item-child nav-item-hover" th:href="@{/contact}">Contact</a></li>
+							<li class="nav-item" sec:authorize="not isAuthenticated()">
+								<div class="wraps">
+									<a class="nav-item-child nav-item-hover" th:href="@{/signin}">
+										<button class="button2">Login</button>
+									</a>
+								</div>
+							</li>
+							<li class="nav-item" sec:authorize="isAuthenticated()">
+								<div class="wraps">
+									<a class="nav-item-child nav-item-hover" th:href="@{/signout}">
+										<button class="button2">Logout</button>
+									</a>
+								</div>
+							</li>
+							<li class="nav-item" sec:authorize="isAuthenticated()"><span
+								class="nav-item-child" style="color: #17bed2; font-size: 16px;">[[${#authentication.name}]]님,
+									환영합니다!</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- End Navbar Collapse -->
+			</div>
+		</nav>
+
+	</header>
+	<!--========== END HEADER ==========-->
+
+	<!--========== PARALLAX ==========-->
+	<div class="parallax-window" data-parallax="scroll"
+		data-image-src="img/1920x1080/01.jpg">
+		<div class="parallax-content container">
+			<h1 class="carousel-title">Insight</h1>
+			<p style="color: white; font-weight: 200; font-size: 20px;">
+				구리 및 광물 원자재 관련 최신 뉴스 및 리포트를 통해 <br /> 관련 동향을 파악할 수 있습니다.
+			</p>
+		</div>
+	</div>
+	<!--========== PARALLAX ==========-->
+
+	<!--========== PAGE LAYOUT ==========-->
+
+	<!-- wordcloud -->
+	<div id="wordcloudSection" class="section_hide">
+		<div class="content-lg container"
+			style="margin-bottom: 0px; padding-bottom: 0px;">
+			<div class="row margin-b-30"
+				style="width: 176px; margin-right: 0px; float: left;">
+				<p
+					style="display: inline-block; font-size: 60px; font-family: sans-serif; font-weight: 700; margin-bottom: 0px;">NEWS</p>
+			</div>
+			<div style="float: left;">
+				<input type="button" id="newsReport" class="custom-btn btn-1"
+					value="news & report"
+					style="padding: 0px; width: 176px; height: 60px; margin-bottom: 30px; font-size: 22px;">
+			</div>
+		</div>
+
+		<div id="newsContainer"
+			style=" margin: 0px 400px 100px 400px; height: 60vh;"></div>
+		<script>
+            anychart.onDocumentReady(function() {
+            	anychart.theme('lightGlamour');
+            	
+				anychart.data.loadJsonFile('http://localhost:9000/project/data/wordcloud.json', function(data) {
+					var dataset = anychart.data.set(data);
+					var mapping = dataset.mapAs({
+                                       x : 'title',
+                                       value : 'count'
+                                    });
+					var chart = anychart.tagCloud(mapping);
+
+					chart
+			          .title(
+			            'News Crawling'
+			          )
+			          // set array of angles, by which words will be placed
+			          .angles([0])
+			          // enabled color range
+			          .colorRange(true)
+			          // set color scale
+			          .colorScale(anychart.scales.ordinalColor())
+			          // set settings for normal state
+			          .normal({
+			            fontFamily: 'Times New Roman'
+			          })
+			          // set settings for hovered state
+			          .hovered({
+			            fill: '#df8892'
+			          })
+			          // set settings for selected state
+			          .selected({
+			            fill: '#df8892',
+			            fontWeight: 'bold'
+			          })
+			          .tooltip().title().fontColor("gray");
+			          
+					chart.tooltip().fontColor("gray");
+					
+                    chart.container('newsContainer').draw();
+				});
+			});
+         </script>
+
+
+
+
+		<div class="bg-color-sky-light" data-auto-height="true">
+			<div class="content-lg container"
+				style="padding-bottom: 50px; margin-bottom: 10px;">
+
+				<div class="row margin-b-30"
+					style="width: 176px; margin-right: 0px;">
+					<p
+						style="display: inline-block; font-size: 60px; font-family: sans-serif; font-weight: 700; margin-bottom: 0px;">REPORTS</p>
+				</div>
+				<br>
+
+				<div class="row"
+					style="width: 1200px; height: 700px; justify-content: center;">
+					<!-- 2022년 워드클라우드 -->
+					<div id="2022Container"
+						style="width: 600px; height: 600px; float: left;"></div>
+					<script>
+						anychart
+								.onDocumentReady(function() {
+									anychart.data
+											.loadJsonFile(
+													'http://localhost:9000/project/data/keywords2022.json',
+													function(data) {
+														var dataset = anychart.data
+																.set(data);
+														var mapping = dataset
+																.mapAs({
+																	x : 'title',
+																	value : 'count'
+																});
+														var chart = anychart
+																.tagCloud(mapping);
+
+														var startColor = '#ffffff';
+														var endColor = '#01579B';
+
+														var colorScale = anychart.scales
+																.ordinalColor();
+														colorScale.colors([
+																startColor,
+																endColor ]);
+
+														chart
+																.title(
+																		{
+																			text : '2022 Report Crawling',
+																			fontColor : '#515769',
+																			fontFamily : 'Times New Roman',
+																			fontSize : 20
+																		})
+																.background(
+																		{
+																			fill : 'white'
+																		})
+																.angles([ 0 ])
+																.colorScale(
+																		anychart.scales
+																				.ordinalColor())
+																.normal(
+																		{
+																			fontFamily : 'KOTRA_GOTHIC',
+																			fill : '#00838F'
+																		})
+																.hovered(
+																		{
+																			fill : '#f08692'
+																		})
+																.selected(
+																		{
+																			fill : '#f08692',
+																			fontWeight : 'bold'
+																		}).tooltip().title().fontColor("gray");
+																          
+																		chart.tooltip().fontColor("gray");
+
+														chart
+																.container(
+																		'2022Container')
+																.draw();
+													});
+								});
+					</script>
+					<!-- 2022년 워드클라우드 -->
+					<div id="2023Container"
+						style="width: 600px; height: 600px; float: right;"></div>
+					<script>
+						anychart
+								.onDocumentReady(function() {
+									anychart.data
+											.loadJsonFile(
+													'http://localhost:9000/project/data/keywords2023.json',
+													function(data) {
+														var dataset = anychart.data
+																.set(data);
+														var mapping = dataset
+																.mapAs({
+																	x : 'title',
+																	value : 'count'
+																});
+														var chart = anychart
+																.tagCloud(mapping);
+
+														var startColor = '#ffffff';
+														var endColor = '#df8892';
+
+														var colorScale = anychart.scales
+																.ordinalColor();
+														colorScale.colors([
+																startColor,
+																endColor ]);
+
+														chart
+																.title(
+																		{
+																			text : '2023 Report Crawling',
+																			fontColor : '#515769',
+																			fontFamily : 'Times New Roman',
+																			fontSize : 20
+																		})
+																.background(
+																		{
+																			fill : 'white'
+																		})
+																.angles([ 0 ])
+																.normal(
+																		{
+																			fontFamily : 'KOTRA_GOTHIC',
+																			fill : '#f08692'
+																		})
+																.hovered(
+																		{
+																			fill : '#00838F'
+																		})
+																.selected(
+																		{
+																			fill : '#00838F',
+																			fontWeight : 'bold'
+																		}).tooltip().title().fontColor("gray");
+																          
+																		chart.tooltip().fontColor("gray");
+
+														chart
+																.container(
+																		'2023Container')
+																.draw();
+													});
+								});
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--  End Wordcloud -->
+
+	<!-- News -->
+	<div id="newsReportSection" class="">
+		<div class="content-lg container"
+			style="margin-bottom: 0px; padding-bottom: 0px;">
+			<div class="row margin-b-30"
+				style="width: 176px; margin-right: 0px; float: left;">
+				<p
+					style="display: inline-block; font-size: 60px; font-family: sans-serif; font-weight: 700; margin-bottom: 0px;">NEWS</p>
+			</div>
+			<div style="float: left;">
+				<input type="button" id="wordcloud" class="custom-btn btn-1"
+					value="wordcloud"
+					style="padding: 0px; width: 176px; height: 60px; margin-bottom: 30px; font-size: 22px;">
+			</div>
+		</div>
+
+		<!-- 뉴스 크롤링1 : 카드섹션 -->
+		<div class="card-section">
+			<div class="card">
+				<span class="regdate">Bloomberg / [[${bloomberg.regdate} ]]</span> <img
+					th:src="@{/image/cards/card01.png}" alt="Card 1 Image">
+				<h2 class="title">[[ ${bloomberg.title} ]]</h2>
+				<a class="read-more" th:href="${bloomberg.link}">Read More ></a>
+			</div>
+			<div class="card">
+				<span class="regdate">Reuters / [[${reuters.regdate} ]]</span> <img
+					th:src="@{/image/cards/card02.png}" alt="Card 2 Image">
+				<h2 class="title">[[ ${reuters.title} ]]</h2>
+				<a class="read-more" th:href="${reuters.link}">Read More ></a>
+			</div>
+			<div class="card">
+				<span class="regdate" style="margin-left: 30px;">
+					TheEconomist / [[${theEconomist.regdate} ]]</span> <img
+					th:src="@{/image/cards/card03.png}" alt="Card 3 Image">
+				<h2 class="title">[[ ${theEconomist.title} ]]</h2>
+				<a class="read-more" th:href="${theEconomist.link}">Read More ></a>
+			</div>
+		</div>
+
+		<!-- 뉴스 크롤링2 -->
+		<div class="container">
+			<div class="row">
+				<hr
+					style="margin-bottom: 30px; margin-top: 30px; border-color: #999;">
+				<div class="col-6">
+					<div class="wow fadeInLeft" data-wow-duration=".3"
+						data-wow-delay=".1s">
+						<div class="service-element"
+							style="display: flex; justify-content: space-between; border-color: #999;">
+							<span><img
+								th:src="@{/image/wordclouds/miningtech-logo.png}"
+								alt="newslogo4" width="90" height=auto;><span
+								class="fweight-700 color-link">&nbsp;&nbsp;&nbsp;&nbsp;[[
+									${mTecht.regdate} ]]</span> </span>
+						</div>
+						<h1 style="margin-bottom: 0px; margin-top: 10px;">[[
+							${mTecht.title} ]]</h1>
+						<div style="float: right; margin-right: 50px;">
+							<a class="link" th:href="${mTecht.link}">Read More</a>
+						</div>
+					</div>
+					<hr
+						style="margin-bottom: 30px; margin-top: 30px; border-color: #999;">
+				</div>
+
+				<div class="col-6">
+					<div class="wow fadeInLeft" data-wow-duration=".3"
+						data-wow-delay=".1s">
+						<div class="service-element"
+							style="display: flex; justify-content: space-between;">
+							<span><img th:src="@{/image/wordclouds/mdc-logo.png}"
+								alt="newslogo5" width="90" height=auto;><span
+								class="fweight-700 color-link">&nbsp;&nbsp;&nbsp;&nbsp;[[
+									${mining.regdate} ]]</span> </span>
+						</div>
+						<h1 style="margin-bottom: 0px; margin-top: 10px;">[[
+							${mining.title} ]]</h1>
+						<div style="float: right; margin-right: 50px;">
+							<a class="link" th:href="${mining.link}">Read More</a>
+						</div>
+					</div>
+					<hr
+						style="margin-bottom: 30px; margin-top: 30px; border-color: #999;">
+				</div>
+
+				<div class="col-6">
+					<div class="wow fadeInLeft" data-wow-duration=".3"
+						data-wow-delay=".1s">
+						<div class="service-element"
+							style="display: flex; justify-content: space-between;">
+							<span><img th:src="@{/image/wordclouds/politico-logo.png}"
+								alt="logo6" width="90" height=auto;> <span
+								class="fweight-700 color-link">&nbsp;&nbsp;&nbsp;&nbsp;[[
+									${politico.regdate} ]]</span> </span>
+						</div>
+						<h1 style="margin-bottom: 0px; margin-top: 10px;">[[
+							${politico.title} ]]</h1>
+						<div style="float: right; margin-right: 50px;">
+							<a class="link" th:href="${politico.link}">Read More</a>
+						</div>
+					</div>
+					<hr
+						style="margin-bottom: 30px; margin-top: 30px; border-color: #999;">
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- 리포트 -->
+		<div class="bg-color-sky-light" data-auto-height="true">
+			<div class="content-lg container">
+				<div class="row margin-b-30">
+					<div class="row margin-b-30"
+						style="width: 176px; margin-right: 0px; float: left;">
+						<p
+							style="display: inline-block; font-size: 60px; font-family: sans-serif; font-weight: 700; margin-bottom: 0px;">REPORTS</p>
+					</div>
+
+				</div>
+
+				<div class="row row-space-1 margin-b-2">
+					<div class="col-sm-4 sm-margin-b-2" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report1.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report1.date}
+										]]</span>&nbsp;[[ ${report1.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report1.filename}"
+								download></a>
+						</div>
+					</div>
+					<div class="col-sm-4 sm-margin-b-2" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report2.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report2.date}
+										]]</span>&nbsp;[[ ${report2.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report2.filename}"
+								download></a>
+						</div>
+					</div>
+					<div class="col-sm-4" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report3.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report3.date}
+										]]</span>&nbsp;[[ ${report3.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report3.filename}"
+								download></a>
+						</div>
+					</div>
+				</div>
+				<!--// end row -->
+
+				<div class="row row-space-1">
+					<div class="col-sm-4 sm-margin-b-2" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report4.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report4.date}
+										]]</span>&nbsp;[[ ${report4.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report4.filename}"
+								download></a>
+						</div>
+					</div>
+					<div class="col-sm-4 sm-margin-b-2" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report5.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report5.date}
+										]]</span>&nbsp;[[ ${report5.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report5.filename}"
+								download></a>
+						</div>
+					</div>
+					<div class="col-sm-4" style="height: 250px;">
+						<div class="service fadeInLeft" style="height: 250px;">
+							<div class="service-element">
+								<i class="service-icon icon-notebook"></i>
+							</div>
+							<div class="service-info">
+								<h3>[[ ${report6.title} ]]</h3>
+								<p>
+									<span class="fweight-700 color-link">[[ ${report6.date}
+										]]</span>&nbsp;[[ ${report6.source} ]]
+								</p>
+							</div>
+							<a class="content-wrapper-link" th:href="${report6.filename}"
+								download></a>
+						</div>
+					</div>
+				</div>
+				<!--// end row -->
+			</div>
+		</div>
+
+	</div>
+	<!-- End 리포트 -->
+
+
+
+	<!--========== END PAGE LAYOUT ==========-->
+
+
+	<!--========== FOOTER ==========-->
+	<footer class="footer">
+		<!-- Links -->
+		<div class="footer-seperator">
+			<div class="content-lg container">
+				<div class="row">
+					<div class="col-sm-2 sm-margin-b-50">
+						<!-- List -->
+						<ul class="list-unstyled footer-list">
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/}">Home</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/products}">Service</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/insights}">Insight</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/community}">Community</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/faq}">FAQ</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								th:href="@{/contact}">Contact</a></li>
+						</ul>
+						<!-- End List -->
+					</div>
+					<div class="col-sm-4 sm-margin-b-30">
+						<!-- List -->
+						<ul class="list-unstyled footer-list">
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Twitter</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Facebook</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">Instagram</a></li>
+							<li class="footer-list-item"><a class="footer-list-link"
+								href="#">YouTube</a></li>
+						</ul>
+						<!-- End List -->
+					</div>
+					<div class="col-sm-5 sm-margin-b-30" style="margin-left: 95px;">
+						<h2 class="color-white">Send Us A Note</h2>
+						<input type="text" class="form-control footer-input margin-b-20"
+							placeholder="Name" name="name" id="noteId" required> <input
+							type="email" class="form-control footer-input margin-b-20"
+							placeholder="Email" name="email" id="noteEmail" required>
+						<input type="text" class="form-control footer-input margin-b-20"
+							placeholder="Phone" name="phone" id="notePhone" required>
+						<textarea class="form-control footer-input margin-b-30" rows="6"
+							placeholder="Message" name="text" id="noteText"
+							style="resize: none;" required></textarea>
+						<input type="button"
+							class="btn-theme btn-theme-sm btn-base-bg text-uppercase"
+							id="noteSubmit" value="Submit">
+					</div>
+					<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+					<script>
+                  $(function() {
+
+                     $("#noteSubmit").click(function() {
+                        let sendData = {
+                           "name" : $("#noteId").val(),
+                           "email" : $("#noteEmail").val(),
+                           "phone" : $("#notePhone").val(),
+                           "text" : $("#noteText").val()
+                        }
+
+                        $.ajax({
+                           url : "note",
+                           method : "POST",
+                           data : sendData,
+                           success : function() {
+
+                              alert("등록되었습니다.");
+
+                              $("#noteId").val("");
+                              $("#noteEmail").val("");
+                              $("#notePhone").val("");
+                              $("#noteText").val("");
+
+                           }
+                        })
+
+                     });
+
+                  });
+               </script>
+				</div>
+				<!--// end row -->
+			</div>
+		</div>
+		<!-- End Links -->
+
+		<!-- Copyright -->
+		<div class="content container">
+			<div class="row">
+				<div class="col-xs-6">
+					<img class="footer-logo" th:src="@{/image/logo.png}"
+						alt="Asentus Logo">
+				</div>
+				<div class="col-xs-6 text-right">
+					<p class="margin-b-0">
+						<a class="color-base fweight-700" href="#"
+							style="font-size: 20px;">K-Digital Training Final Project</a>
+					</p>
+				</div>
+			</div>
+			<!--// end row -->
+		</div>
+		<!-- End Copyright -->
+	</footer>
+	<!--========== END FOOTER ==========-->
+
+	<!-- Back To Top -->
+	<a href="javascript:void(0);" class="js-back-to-top back-to-top">Top</a>
+
+	<!-- JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- CORE PLUGINS -->
+	<script th:src="@{/vendor/jquery.min.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery-migrate.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"
+		type="text/javascript"></script>
+
+	<!-- PAGE LEVEL PLUGINS -->
+	<script th:src="@{/vendor/jquery.easing.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery.back-to-top.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/jquery.wow.min.js}" type="text/javascript"></script>
+	<script th:src="@{/vendor/swiper/js/swiper.jquery.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/masonry/jquery.masonry.pkgd.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/vendor/masonry/imagesloaded.pkgd.min.js}"
+		type="text/javascript"></script>
+
+	<!-- PAGE LEVEL SCRIPTS -->
+	<script th:src="@{/script/layout.min.js}" type="text/javascript"></script>
+	<script th:src="@{/script/components/wow.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/script/components/swiper.min.js}"
+		type="text/javascript"></script>
+	<script th:src="@{/script/components/masonry.min.js}"
+		type="text/javascript"></script>
+</body>
+<!-- END BODY -->
+
+</html>
